@@ -1,0 +1,41 @@
+class Ball
+{
+   constructor()
+   {
+        this.r = 10;
+        this.reset();
+   } 
+
+   draw()
+    {
+        ellipse(this.x, this.y, this.r * 2);
+    }
+
+    move()
+    {
+        this.x += this.stepX;
+        this.y += this.stepY;
+    }
+
+    edge()
+    {
+        if(this.y - this.r <= 0 || this.y + this.r >= height)
+        {
+            this.stepY *= -1;
+        }
+
+        if(this.x - this.r <= 0 || this.x + this.r >= width)
+        {
+            this.reset();
+        }
+    }
+
+    reset()
+    {
+        this.x = int(width / 2);
+        this.y = int(height / 2);
+        this.r = 10;
+        this.stepX = random([-1, 1]);
+        this.stepY = random([-1, 1]);
+    }
+}
